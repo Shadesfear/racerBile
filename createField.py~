@@ -1,0 +1,12 @@
+from p5 import *
+
+class Rbane:
+    def __init__():
+        pass
+
+
+    def forward(self, type):
+        pass
+
+    def turn(self, angle):
+        rotate(angle)
