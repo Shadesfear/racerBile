@@ -16,9 +16,9 @@ class Player():
     def __str__(self):
         return "Player nr: {}".format(self.name)
 
-
     def getPos(self):
-        return self.pos
+        return  (self.pos + self.omgange * len(self.turns))
+
 
     def setFørst(self, val):
         self.først = val
@@ -31,13 +31,10 @@ class Player():
 
     def roll(self):
         dice = 0
-
         if self.gear > 3:
-            #print("Cant throw more that 3 dice")
             self.gear = 3
 
         elif self.gear < 1:
-            #print("Cant throw less than 1 die")
             self.gear = 1
 
         for i in range(self.gear):
@@ -60,8 +57,8 @@ class Player():
 
     def take_turn(self):
         temp = self.taare
-        if self.STALIN:
-            self.gear += 1
+
+        self.gear +=1 if self.STALIN
 
         roll = self.roll()
 
