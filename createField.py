@@ -36,22 +36,25 @@ def setup():
 def draw():
     background(51)
     translate(width/2,height/2)
+
     circle((0,0),40)
     circle((0,40),40)
     circle((0,80),40)
+
     translate(0,80)
     rotate(PI/3)
-    circle((0,40),40)
-    translate(0,40)
-    rotate(PI/3)
-    circle((0,40),40)
-    translate(0,40)
-    rotate(PI/3)
-    circle((0,40),40)
-    translate(0,40)
-    rotate(PI/3)
-    circle((0,40),40)
 
+    circle((0,40),40)
+    translate(0,40)
+    rotate(PI/3)
+    circle((0,40),40)
+    translate(0,40)
+    rotate(PI/3)
+    circle((0,40),40)
+    translate(0,40)
+    rotate(PI/3)
+    circle((0,40),40)
+    5
 
 if __name__=="__main__":
     run()

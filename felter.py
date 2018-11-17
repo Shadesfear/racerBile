@@ -8,3 +8,4 @@ class Felter():
 
 
     def draw(x, y):
+        pass

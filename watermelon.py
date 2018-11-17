@@ -5,7 +5,7 @@ class Player():
         self.pos = 0
         self.omgange = 0
         self.taare = 0
-        self.gear = 3
+        self.gear = 1
         self.STALIN = False
         self.først = False
         self.sidst = False
@@ -17,8 +17,7 @@ class Player():
         return "Player nr: {}".format(self.name)
 
     def getPos(self):
-        return  (self.pos + self.omgange * len(self.turns))
-
+        return [self.name, (self.pos + self.omgange * len(self.turns))]
 
     def setFørst(self, val):
         self.først = val
@@ -31,6 +30,7 @@ class Player():
 
     def roll(self):
         dice = 0
+
         if self.gear > 3:
             self.gear = 3
 
@@ -40,6 +40,7 @@ class Player():
         for i in range(self.gear):
             dice += random.randint(1,4)
         return dice
+
 
     def af_banen(self, roll):
         self.taare += 12
@@ -56,24 +57,36 @@ class Player():
 
 
     def take_turn(self):
+
         temp = self.taare
 
-        self.gear +=1 if self.STALIN
+        if self.sidst:
+            print(self.name, "jeg er sidst", self.pos)
+            self.taare += 1
+            self.sidst = False
+
+        if self.først:
+            print(self.name, "jeg er først", self.pos)
+            self.taare += 1
+            self.sidst = False
+
+        if self.STALIN:
+            self.gear +=1
 
         roll = self.roll()
 
+
         if roll >= 10:
-            #print("AF BANEN")
             self.af_banen(roll)
             return
 
         if self.gear == 3 and roll == 3:
-            #print("Smadret gearkase")
             self.taare += 12
             self.gear = 1
             return
 
         else:
+
             for i in range(roll):
                 self.pos+=1
                 if self.pos == len(self.turns):
@@ -84,5 +97,5 @@ class Player():
                 if roll >= 7 and self.turns[self.pos] == 1:
                     self.taare += 1
 
-        if self.taare ==  temp:
+        if self.taare == temp:
             self.taare += 1
